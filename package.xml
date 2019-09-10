@@ -40,5 +40,13 @@
         <members>*</members>
         <name>CustomTab</name>
     </types>
+    <types>
+        <members>Answer__c-Answer Layout</members>
+        <members>Attempt__c-Attempt Layout</members>
+        <members>Player__c-Player Layout</members>
+        <members>Question__c-Question Layout</members>
+        <members>Quiz__c-Quiz Layout</members>
+        <name>Layout</name>
+    </types>
     <version>46.0</version>
 </Package>
