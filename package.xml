@@ -42,7 +42,12 @@
         <name>CustomObject</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Answer__c</members>
+        <members>Attempt__c</members>
+        <members>Player__c</members>
+        <members>Question__c</members>
+        <members>Quiz__c</members>
+        <members>Team__c</members>
         <name>CustomTab</name>
     </types>
     <types>
