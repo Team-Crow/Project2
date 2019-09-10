@@ -33,7 +33,12 @@
         <name>StaticResource</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Answer__c</members>
+        <members>Attempt__c</members>
+        <members>Player__c</members>
+        <members>Question__c</members>
+        <members>Quiz__c</members>
+        <members>Team__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -47,6 +52,10 @@
         <members>Question__c-Question Layout</members>
         <members>Quiz__c-Quiz Layout</members>
         <name>Layout</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Flow</name>
     </types>
     <version>46.0</version>
 </Package>
