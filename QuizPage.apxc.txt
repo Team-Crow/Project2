@@ -1,0 +1,50 @@
+public with sharing class QuizPage {
+	public Integer rec { get; set; }
+    public Integer tot { get; set; }
+   	integer totalRecs = 0;
+   	integer count= 0;
+   	integer LimitSize= 1;
+
+	public QuizPage(){
+    	tot=totalRecs = [select count() from Question__c];
+    }
+    
+    public List<Quiz__c> Math = [SELECT Id FROM Quiz__c WHERE Category__c = 'Math'];
+    
+    public List<Question__c> questions=new List<Question__c>();
+   	public List<Question__c> getQuestions() {
+   		List<Question__c> q=[select Name, Question__c, A__c, B__c, C__c, D__c, Quiz__c from Question__c WHERE Quiz__c IN : Math ORDER BY Name LIMIT:limitsize OFFSET:count];
+        //system.debug('values are:' + ld);
+        return q;
+    }
+    
+    public void updatePage() {
+        questions.clear();
+        limitsize=rec;
+        questions=[select Name, Question__c, A__c, B__c, C__c, D__c, Quiz__c from Question__c WHERE Quiz__c IN : Math ORDER BY Name LIMIT:limitsize OFFSET:count];
+    }
+    
+    public PageReference prvbtn() {
+    	count=count-limitsize;
+        return null;
+    }
+
+ 	public PageReference Nxtbtn() {
+ 		count=count+limitsize;
+        return null;
+    }
+ 
+    public Boolean getNxt() {
+        if((count+ LimitSize) >= totalRecs)
+       		return true;
+     	else
+       		return false;     
+    }
+    
+    public Boolean getPrv() {
+       if(count== 0)
+           return true;
+       else
+           return false;
+    }
+}
