@@ -15,7 +15,7 @@ public with sharing class QuizPage {
     }
     
     public QuizPage(){
-    	tot=totalRecs = [select count() from Answer__c];
+    	tot=totalRecs = [select count() from Answer__c WHERE Attempt__c IN : attempt];
         //questions = [select Name, Question__c, A__c, B__c, C__c, D__c, Choice__c from Answer__c WHERE Attempt__c IN : attempt ORDER BY Name LIMIT:limitsize OFFSET:count];
         questions = getQuestions();
     }
@@ -43,11 +43,13 @@ public with sharing class QuizPage {
     
     public PageReference prvbtn() {
     	count=count-limitsize;
+        updatePage();
         return null;
     }
 
  	public PageReference Nxtbtn() {
- 		count=count+limitsize;
+ 	count=count+limitsize;
+        updatePage();
         return null;
     }
  
