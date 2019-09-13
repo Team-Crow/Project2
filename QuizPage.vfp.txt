@@ -4,7 +4,7 @@
             <apex:pageMessages/>
             <div style="font-size: 20px;">
             <apex:repeat value="{!questions}" var="q">
-                <apex:pageBlockSection>
+                <apex:pageBlockSection title="Question">
                     <apex:outputText value="{!q.Question__c}" id="Question"/><br/>
                     <apex:commandButton value="A" styleClass="buttonStyle" style="background:LightBlue;width:150px;">
                         <apex:outputText value="{!q.A__c}"/><br />
@@ -30,7 +30,7 @@
             <td align="center">
                 <apex:commandButton value="Previous" action="{!prvbtn}" disabled="{!prv}" reRender="question_list"/>
                 <apex:commandButton value="Next" action="{!Nxtbtn}" disabled="{!nxt}" reRender="question_list"/>
-                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Save" action="{!save}" reRender="question_list"/>
             </td>
             <td align="right">
             Questons per page 
