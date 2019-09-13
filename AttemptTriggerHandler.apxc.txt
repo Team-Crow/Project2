@@ -1,0 +1,22 @@
+public class AttemptTriggerHandler {
+	public static void createDefaultAnswers(List<Attempt__c> newAttempts){
+        Set<ID> attemptIDSet = new Set<ID>();
+        for(Attempt__c a: newAttempts){
+            attemptIDSet.add(a.id);
+        }
+        List<Answer__c> answerList = new List<Answer__c>();
+       	List<Attempt__c> attemptList=[select id, name, Quiz__c, (select Name from Answers__r) from Attempt__c where id IN :attemptIDSet];
+        ID quizID = attemptList[0].Quiz__c;
+        List<Question__c> questionList = [select id, name from Question__c where Quiz__c =: quizID];
+        
+		for(Attempt__c a: attemptList){
+			if(a.Answers__r.isEmpty()){
+                for(integer i=0; i<5; i++){
+                    Answer__c answer = new Answer__c(Attempt__c = a.Id, QuestionNumber__c = questionList[i].id);
+                	answerList.add(answer);   
+                }
+			}	
+		}
+       	database.insert(answerList, false);
+    }
+}

@@ -1,0 +1,3 @@
+trigger AttemptTrigger on Attempt__c (after insert) {
+    AttemptTriggerHandler.createDefaultAnswers(Trigger.New);
+}
