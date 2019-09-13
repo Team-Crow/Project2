@@ -1,6 +1,7 @@
 <apex:page controller="QuizPage" sidebar="false">
     <apex:form id="question_list">
         <apex:pageBlock title="Quiz">
+            <apex:pageMessages/>
             <div style="font-size: 20px;">
             <apex:repeat value="{!questions}" var="q">
                 <apex:pageBlockSection>
@@ -17,6 +18,7 @@
                     <apex:commandButton value="D" styleClass="buttonStyle" style="background:LightBlue;width:150px;">
                         <apex:outputText value="{!q.D__c}" /><br />
                     </apex:commandButton>
+                    <apex:inputField value="{!q.Choice__c}"/>
                 </apex:pageBlockSection>
 			</apex:repeat>
             </div>
@@ -28,6 +30,7 @@
             <td align="center">
                 <apex:commandButton value="Previous" action="{!prvbtn}" disabled="{!prv}" reRender="question_list"/>
                 <apex:commandButton value="Next" action="{!Nxtbtn}" disabled="{!nxt}" reRender="question_list"/>
+                <apex:commandButton value="Save" action="{!save}"/>
             </td>
             <td align="right">
             Questons per page 
