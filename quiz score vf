@@ -1,0 +1,13 @@
+<apex:page controller="TotalScore">
+    <apex:pageBlock >
+        <apex:pageBlockSection title="Quiz scores">
+        <apex:pageBlockTable value="{!Attempts}" var="a">
+            <apex:column value="{!a.Name}"/>
+            <apex:column value="{!a.Score__c}"/>
+        </apex:pageBlockTable>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Average Score">
+            <apex:outputText value="{!TotalScore}" />
+        </apex:pageBlockSection>    
+    </apex:pageBlock>
+</apex:page>
