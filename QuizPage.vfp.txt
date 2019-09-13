@@ -1,7 +1,7 @@
 <apex:page controller="QuizPage" sidebar="false">
-    <apex:form id="question_list">
-        <apex:pageBlock title="Quiz">
-            <apex:pageMessages/>
+    <apex:form>
+        <apex:pageBlock title="Quiz" id="question_list">
+            <apex:pageMessages />
             <div style="font-size: 20px;">
             <apex:repeat value="{!questions}" var="q">
                 <apex:pageBlockSection title="Question">
