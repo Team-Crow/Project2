@@ -1,5 +1,5 @@
 public with sharing class QuizPage {
-    public list<Answer__c> ans {get;set;}
+    public list<Answer__c> questions {get;set;}
 	public Integer rec { get; set; }
     public Integer tot { get; set; }
    	integer totalRecs = 0;
@@ -8,7 +8,7 @@ public with sharing class QuizPage {
     
     List<Player__c> p=[SELECT Name, User__c FROM PLayer__c WHERE User__c = :UserInfo.getUserID()];
     public List<Attempt__c> attempt = [SELECT Id FROM Attempt__c WHERE Player__c =: p[0].Id ORDER BY LastModifiedDate DESC LIMIT 1];
-    public List<Answer__c> questions=new List<Answer__c>();
+    //public List<Answer__c> questions=new List<Answer__c>();
    	public List<Answer__c> getQuestions() {
    		List<Answer__c> q=[select Name, Question__c, A__c, B__c, C__c, D__c, Choice__c from Answer__c WHERE Attempt__c IN : attempt ORDER BY Name LIMIT:limitsize OFFSET:count];
         return q;
@@ -16,6 +16,8 @@ public with sharing class QuizPage {
     
     public QuizPage(){
     	tot=totalRecs = [select count() from Answer__c];
+        //questions = [select Name, Question__c, A__c, B__c, C__c, D__c, Choice__c from Answer__c WHERE Attempt__c IN : attempt ORDER BY Name LIMIT:limitsize OFFSET:count];
+        questions = getQuestions();
     }
         
     public void updatePage() {
@@ -24,21 +26,13 @@ public with sharing class QuizPage {
         questions=[select Name, Question__c, A__c, B__c, C__c, D__c, Choice__c from Answer__c WHERE Attempt__c IN : attempt ORDER BY Name LIMIT:limitsize OFFSET:count];
     }
     
-        public void save2() {
+    public void save2() {
         update questions;
     }
     
-    public List<Answer__c> ansList = new List<Answer__c>();
-   	public List<Answer__c> getListofAns()
-   	{
-       	ansList =  [select Name, Choice__c from Answer__c WHERE Attempt__c IN : attempt];
-      	return ansList;
-   	}
-
-    
     public PageReference save() {
         try {
-            update ansList;
+            update questions;
         } catch(system.DmlException e) {
             Apexpages.AddMessages(e);
             return null;
