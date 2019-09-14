@@ -10,29 +10,4 @@ public class ChooseQuiz {
     	Page.setRedirect(true);
     	return Page;
     }
-    
-    
-	/*
-    public Attempt__c NewAttempt { get; set; }
-    //public Quiz__c quiz { get; set; }
-    
-    List<Player__c> p=[SELECT Name, User__c FROM PLayer__c WHERE User__c = :UserInfo.getUserID()];
-    
-    public ChooseQuiz (){
-        Attempt__c newAttempt = new Attempt__c(Player__c = p[0].Id);
-        //newAttempt.Quiz__c = 
-    }
-    
-    public PageReference save() {
-        insert newAttempt;
-        //return new ApexPages.StandardController(newAttempt).save();
-        return null;
-    } 
-    
-    public PageReference Move()
-    {
-    PageReference Page = new PageReference('/apex/QuizPage');
-    Page.setRedirect(true);
-    return Page;
-    }*/
 }
