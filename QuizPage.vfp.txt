@@ -1,40 +1,40 @@
 <apex:page controller="QuizPage" sidebar="false">
-    <apex:form>
+    <apex:form >
         <apex:pageBlock title="Quiz" id="question_list">
             <apex:pageMessages />
             <div style="font-size: 20px;">
             <apex:repeat value="{!questions}" var="q">
                 <apex:pageBlockSection title="Question">
                     <apex:outputText value="{!q.Question__c}" id="Question"/><br/>
-                    <apex:commandButton value="A" styleClass="buttonStyle" style="background:LightBlue;width:150px;">
+                    <apex:commandButton value="A" styleClass="buttonStyle" action="{!ChooseA}" style="background:LightBlue;width:150px;margin-left:100px">
                         <apex:outputText value="{!q.A__c}"/><br />
                     </apex:commandButton>
-                    <apex:commandButton value="B" styleClass="buttonStyle" style="background:LightBlue;width:150px;">
+                    <apex:commandButton value="B" styleClass="buttonStyle" action="{!ChooseB}" style="background:LightBlue;width:150px;margin-left:100px">
                         <apex:outputText value="{!q.B__c}"/><br />
                     </apex:commandButton>
-                    <apex:commandButton value="C" styleClass="buttonStyle" style="background:LightBlue;width:150px;">
+                    <apex:commandButton value="C" styleClass="buttonStyle" action="{!ChooseC}" style="background:LightBlue;width:150px;margin-left:100px">
                         <apex:outputText value="{!q.C__c}" /><br />
                     </apex:commandButton>
-                    <apex:commandButton value="D" styleClass="buttonStyle" style="background:LightBlue;width:150px;">
+                    <apex:commandButton value="D" styleClass="buttonStyle" action="{!ChooseD}" style="background:LightBlue;width:150px;margin-left:100px">
                         <apex:outputText value="{!q.D__c}" /><br />
                     </apex:commandButton>
-                    <apex:inputField value="{!q.Choice__c}"/>
+                    <apex:outputField value="{!q.Choice__c}"/>
                 </apex:pageBlockSection>
 			</apex:repeat>
             </div>
             <table style="width: 100%">
             <tr>
     		<td>
-            	<apex:outputLabel >Total Questons:{!tot}</apex:outputLabel> 
+            	<apex:outputLabel style="margin-left:50px" >Total Questons:{!tot}</apex:outputLabel> 
             </td>
             <td align="center">
-                <apex:commandButton value="Previous" action="{!prvbtn}" disabled="{!prv}" reRender="question_list"/>
-                <apex:commandButton value="Next" action="{!Nxtbtn}" disabled="{!nxt}" reRender="question_list"/>
-                <apex:commandButton value="Save" action="{!save}" reRender="question_list"/>
+                <apex:commandButton value="Previous" action="{!prvbtn}" disabled="{!prv}" reRender="question_list" style="width:60px"/>
+                <apex:commandButton value="Next" action="{!Nxtbtn}" disabled="{!nxt}" reRender="question_list" style="width:60px"/>
+                <apex:commandButton value="Submit" action="{!save}" reRender="question_list" style="width:60px"/>
             </td>
             <td align="right">
             Questons per page 
-            <apex:selectList value="{!rec}" size="1" >
+            <apex:selectList value="{!rec}" size="1" style="margin-right:50px">
                 <apex:selectOption itemLabel="1" itemValue="1"></apex:selectOption>
                 <apex:selectOption itemLabel="5" itemValue="5"></apex:selectOption>
                 <apex:actionSupport event="onchange" reRender="question_list" action="{!updatePage}"/>
