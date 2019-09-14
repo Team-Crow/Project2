@@ -26,8 +26,36 @@ public with sharing class QuizPage {
         questions=[select Name, Question__c, A__c, B__c, C__c, D__c, Choice__c from Answer__c WHERE Attempt__c IN : attempt ORDER BY Name LIMIT:limitsize OFFSET:count];
     }
     
-    public void save2() {
+    public PageReference ChooseA() {
+        for(Answer__c a: questions){
+            a.Choice__c = 'A';
+        }
         update questions;
+        return null;
+    }
+    
+    public PageReference ChooseB() {
+        for(Answer__c a: questions){
+            a.Choice__c = 'B';
+        }
+        update questions;
+        return null;
+    }
+    
+    public PageReference ChooseC() {
+        for(Answer__c a: questions){
+            a.Choice__c = 'C';
+        }
+        update questions;
+        return null;
+    }
+    
+    public PageReference ChooseD() {
+        for(Answer__c a: questions){
+            a.Choice__c = 'D';
+        }
+        update questions;
+        return null;
     }
     
     public PageReference save() {
@@ -48,7 +76,7 @@ public with sharing class QuizPage {
     }
 
  	public PageReference Nxtbtn() {
- 	count=count+limitsize;
+ 		count=count+limitsize;
         updatePage();
         return null;
     }
