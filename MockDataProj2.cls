@@ -16,6 +16,7 @@ public class MockDataProj2 {
         //inserting into the database for quiz
          database.insert(quizList);
         
+        ////////////////////////////////////////////////
         
         //query through the quiz to get name and id
         list<Quiz__c> queryQuiz = [Select Name, Id From Quiz__c];
@@ -173,5 +174,62 @@ public class MockDataProj2 {
         
         //inserting into the database for questions
         database.insert(questionList);
+        
+        ////////////////////////////////////////////////
+        
+        //creating teams
+        list<Team__c> nTeam = new list<Team__c>();
+        nTeam.add(new team__c(Name='Winner'));
+        nTeam.add(new team__c(Name='Loser'));
+        
+        //inserting team into database
+        database.insert(nTeam);
+        
+        ////////////////////////////////////////////////
+        
+        //querying teams
+        list<Team__c> queryTeam = [Select id, Name From Team__c];
+       
+        //inserting players
+        list<Player__c> nPlayer = new list<Player__c>();
+        for(Team__c loopTeam: queryTeam) {
+            if (loopTeam.Name == 'Winner') {
+                nPlayer.add(new player__c(Name='Joe',
+                                         Team__c=loopTeam.Id, Rank__c=100, Quiz_Average__c=100, Points__c=1000));
+            } else if (loopTeam.Name == 'Loser') {
+                nPlayer.add(new player__c(Name='Frank',
+                                         Team__c=loopTeam.Id, Rank__c=0, Quiz_Average__c=0, Points__c=0));
+                nPlayer.add(new player__c(Name='Jabed',
+                                         Team__c=loopTeam.Id, Rank__c=0, Quiz_Average__c=0, Points__c=0));
+                nPlayer.add(new player__c(Name='Auroiah',
+                                         Team__c=loopTeam.Id, Rank__c=0, Quiz_Average__c=0, Points__c=0));
+                nPlayer.add(new player__c(Name='Farkhod',
+                                         Team__c=loopTeam.Id, Rank__c=0, Quiz_Average__c=0, Points__c=0));
+                nPlayer.add(new player__c(Name='Ben',
+                                         Team__c=loopTeam.Id, Rank__c=0, Quiz_Average__c=0, Points__c=0));
+            }
+        }
+        //inserting players into database
+        database.insert(nPlayer);
+        
+        ////////////////////////////////////////////////
+        
+        //creating attempts
+        list<Attempt__c> nAttempt = new list<Attempt__c>();
+        
+        //querying the quiz and player to add into attempt
+        list<Quiz__c> queryQuiz2 = [Select id, Name From Quiz__c];
+        list<Player__c> queryPlayer2 = [Select id, Name From Player__c];
+        
+        //inserting attempts
+        for(Player__c loopingPlayer: queryPlayer2) {
+            for(Quiz__c loopingQuiz: queryQuiz2) {
+                nAttempt.add(new Attempt__c(Quiz__c=loopingQuiz.Id, Player__c=loopingPlayer.id));
+            }
+        }
+        //inserting attempt into the database
+        database.insert(nAttempt);
+        
+        ////////////////////////////////////////////////
     }
 }
