@@ -231,5 +231,19 @@ public class MockDataProj2 {
         database.insert(nAttempt);
         
         ////////////////////////////////////////////////
+        
+        //answering
+        list<Answer__c> nAnswer = new list<Answer__c>();
+        list<Answer__c> qAnwer = [Select id, Choice__c From Answer__c];
+        Integer a = 0;
+        for(Answer__c answerA: qAnwer) {
+            answerA.Id = qAnwer[a].id;
+            answerA.Choice__c = 'A';
+            a++;
+            nAnswer.add(answerA);
+        }
+        //updating answer from the database
+        database.update(nAnswer);
+        
     }
 }
