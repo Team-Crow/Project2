@@ -6,6 +6,14 @@
     </types>
     <types>
         <members>*</members>
+        <name>Settings</name>
+    </types>
+        <types>
+        <members>*</members>
+        <name>Profile</name>
+    </types>    
+    <types>
+        <members>*</members>
         <name>ApexComponent</name>
     </types>
     <types>
