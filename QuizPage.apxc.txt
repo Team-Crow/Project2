@@ -80,6 +80,12 @@ public with sharing class QuizPage {
         updatePage();
         return null;
     }
+    
+    public pagereference Submit(){
+        PageReference Page = new PageReference('https://players-developer-edition.na136.force.com/');
+    	Page.setRedirect(true);
+    	return Page;
+    }
  
     public Boolean getNxt() {
         if((count+ LimitSize) >= totalRecs)
