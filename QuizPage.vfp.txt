@@ -30,7 +30,7 @@
             <td align="center">
                 <apex:commandButton value="Previous" action="{!prvbtn}" disabled="{!prv}" reRender="question_list" style="width:60px"/>
                 <apex:commandButton value="Next" action="{!Nxtbtn}" disabled="{!nxt}" reRender="question_list" style="width:60px"/>
-                <apex:commandButton value="Submit" action="{!save}" reRender="question_list" style="width:60px"/>
+                <apex:commandButton value="Submit" action="{!Submit}" reRender="question_list" style="width:60px"/>
             </td>
             <td align="right">
             Questons per page 
