@@ -1,5 +1,6 @@
 public class MockDataProj2 {
-    public static void dataInput() {
+    
+    public static void dataInputQuizQuest() {
         
         //quiz mock data
         list<Quiz__c> quizList = new list<Quiz__c>();
@@ -175,8 +176,13 @@ public class MockDataProj2 {
         //inserting into the database for questions
         database.insert(questionList);
         
+    }
+    
+    
         ////////////////////////////////////////////////
         
+    
+    public static void dataInputPlayerTeam() {
         //creating teams
         list<Team__c> nTeam = new list<Team__c>();
         nTeam.add(new team__c(Name='Winner'));
@@ -212,38 +218,43 @@ public class MockDataProj2 {
         //inserting players into database
         database.insert(nPlayer);
         
-        ////////////////////////////////////////////////
-        
-        //creating attempts
-        list<Attempt__c> nAttempt = new list<Attempt__c>();
-        
-        //querying the quiz and player to add into attempt
-        list<Quiz__c> queryQuiz2 = [Select id, Name From Quiz__c];
-        list<Player__c> queryPlayer2 = [Select id, Name From Player__c];
-        
-        //inserting attempts
-        for(Player__c loopingPlayer: queryPlayer2) {
-            for(Quiz__c loopingQuiz: queryQuiz2) {
-                nAttempt.add(new Attempt__c(Quiz__c=loopingQuiz.Id, Player__c=loopingPlayer.id));
-            }
-        }
-        //inserting attempt into the database
-        database.insert(nAttempt);
-        
-        ////////////////////////////////////////////////
-        
-        //answering
-        list<Answer__c> nAnswer = new list<Answer__c>();
-        list<Answer__c> qAnwer = [Select id, Choice__c From Answer__c];
-        Integer a = 0;
-        for(Answer__c answerA: qAnwer) {
-            answerA.Id = qAnwer[a].id;
-            answerA.Choice__c = 'A';
-            a++;
-            nAnswer.add(answerA);
-        }
-        //updating answer from the database
-        database.update(nAnswer);
-        
     }
+    
+    
+        ////////////////////////////////////////////////
+        
+    
+    public static void dataInputAttempAns() { 
+            //creating attempts
+            list<Attempt__c> nAttempt = new list<Attempt__c>();
+            
+            //querying the quiz and player to add into attempt
+            list<Quiz__c> queryQuiz2 = [Select id, Name From Quiz__c];
+            list<Player__c> queryPlayer2 = [Select id, Name From Player__c];
+            
+            //inserting attempts
+            for(Player__c loopingPlayer: queryPlayer2) {
+                for(Quiz__c loopingQuiz: queryQuiz2) {
+                    nAttempt.add(new Attempt__c(Quiz__c=loopingQuiz.Id, Player__c=loopingPlayer.id));
+                }
+            }
+            //inserting attempt into the database
+            database.insert(nAttempt);
+            
+            ////////////////////////////////////////////////
+            
+            //answering
+            list<Answer__c> nAnswer = new list<Answer__c>();
+            list<Answer__c> qAnwer = [Select id, Choice__c From Answer__c];
+            Integer a = 0;
+            for(Answer__c answerA: qAnwer) {
+                answerA.Id = qAnwer[a].id;
+                answerA.Choice__c = 'A';
+                a++;
+                nAnswer.add(answerA);
+            }
+            //updating answer from the database
+            database.update(nAnswer);
+       }
+        
 }
