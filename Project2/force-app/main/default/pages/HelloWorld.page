@@ -1,0 +1,33 @@
+<apex:page standardController="Account" recordSetvar="accounts">
+  <apex:pageBlock title="Viewing Accounts">
+  <apex:form id="theForm">
+    <apex:pageBlockSection >
+      <apex:dataList var="a" value="{!accounts}" type="1">
+        {!a.name}
+      </apex:dataList>
+    </apex:pageBlockSection>
+    <apex:panelGrid columns="2">
+      <apex:commandLink action="{!previous}">Previous</apex:commandlink>
+      <apex:commandLink action="{!next}">Next</apex:commandlink>
+    </apex:panelGrid>
+  </apex:form>
+  </apex:pageBlock>
+</apex:page>
+
+
+
+<!--
+<apex:page standardController="Account">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Contacts">
+                <apex:pageblocktable value="{!account.contacts}" var="con">
+                <apex:column >
+                    <apex:outputText value="{!con.name}"/>
+                </apex:column>    
+            </apex:pageblocktable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+-->

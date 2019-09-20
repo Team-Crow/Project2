@@ -1,0 +1,18 @@
+<apex:page controller="WrapperClass">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!changeStateToCA}" value="Update State"/>
+                <apex:commandButton action="{!removeState}" value="Remove State"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!wrapAccountList}" var="w">
+                <apex:column headerValue="Select">
+                    <apex:inputCheckbox value="{!w.selected}"/>
+                </apex:column>
+                <apex:column value="{!w.account.Name}"/>
+                <apex:column value="{!w.account.Phone}"/>
+                <apex:column value="{!w.account.BillingState}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

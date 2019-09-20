@@ -1,0 +1,34 @@
+<apex:page controller="PagenationController" showHeader="false">
+    <apex:form id="pg1">
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!leads}" var="ld">
+                <apex:column headerValue="Name">
+                    <apex:outputField value="{!ld.Name}"/>
+                </apex:column>
+                <apex:column headerValue="Email">
+                    <apex:outputField value="{!ld.Email}"/>
+                </apex:column>
+                <apex:column headerValue="Company">
+                    <apex:outputField value="{!ld.Company}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:outputLabel >Total no of recs:{!tot}</apex:outputLabel>
+ 
+            <div align="center">
+                <apex:commandButton value="First Page" action="{!Firstbtn}" disabled="{!prv}" reRender="pg1"/>
+                <apex:commandButton value="PreviousPage" action="{!prvbtn}" disabled="{!prv}" reRender="pg1"/>
+                <apex:commandButton value="NextPage" action="{!Nxtbtn}" disabled="{!nxt}" reRender="pg1"/>
+                <apex:commandButton value="LastPage" action="{!lstbtn}" disabled="{!nxt}" reRender="pg1"/>
+            </div>
+            Display records per page 
+            <apex:selectList value="{!rec}" size="1" >
+                <apex:selectOption itemLabel="1" itemValue="1" ></apex:selectOption>
+                <apex:selectOption itemLabel="2" itemValue="2"></apex:selectOption>
+                <apex:selectOption itemLabel="5" itemValue="5"></apex:selectOption>
+                <apex:selectOption itemLabel="10" itemValue="10"></apex:selectOption>
+                <apex:actionSupport event="onchange" reRender="pg1" action="{!updatePage}"/>
+            </apex:selectList><br/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+<!--https://developer.salesforce.com/forums/?id=906F0000000BZxWIAW-->

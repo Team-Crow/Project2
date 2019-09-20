@@ -1,0 +1,33 @@
+<apex:page controller="ChooseQuiz">
+    <apex:form >
+        <apex:pageBlock title="New Attempt">
+            <apex:pageBlockSection >
+                <apex:outputText value="{!player.Name}"/>
+                <apex:inputField value="{!NewAttempt.Quiz__c}"/>
+            </apex:pageBlockSection>
+            <table style="width: 100%">
+            <tr>
+                <td align="center">
+                    <apex:commandButton action="{!SaveAttempt}" value="Start Quiz"/>
+                </td>
+            </tr>
+            </table>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+
+<!--
+<apex:page standardController="Attempt__c" extensions="ChooseQuiz">
+    <apex:form >
+        <apex:pageBlock title="New Attempt" mode="edit">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!SaveAttempt}" value="Save"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:inputField value="{!Attempt__c.Player__c}"/>
+                <apex:inputField value="{!Attempt__c.Quiz__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+-->

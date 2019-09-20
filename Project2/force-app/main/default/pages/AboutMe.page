@@ -1,0 +1,57 @@
+<apex:page tabStyle="User">
+    <apex:pageBlock >
+		<apex:sectionHeader title="About Me"/>
+        <p>Hello my name is Frank Yang. I am a two times certified Salesforce consultant.</p>
+        <apex:image url="{!$Resource.astro}" style="max-wiidth:100px;max-height:100px;"/>
+        <br/>
+        <apex:outputLink value="https://www.linkedin.com/in/frank-yang-090660186/" id="theLink" target="_blank">Linkdln</apex:outputLink>
+        <apex:pageBlockSection title="Fun Facts">
+            <ul>
+                <li>Lived in California for almost 10 years.</li>
+                <li>I love Japanese curry and Indian curry.</li>
+                <li>My favoirte color is blue.</li>
+                <li>I like to watch Youtube videos and Twitch streams.</li>
+            </ul>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Education">
+        	<table>
+            	<tr>
+               		<th>Education</th>
+               		<th>School</th>
+               		<th>Year</th>
+            	</tr>
+            	<tr>
+               		<td>BS, Computer Engineering</td>
+               		<td>San Francisco State University</td>
+               		<td>2017 - 2019</td>
+            	</tr>
+            	<tr>
+               		<td>AS, Computer Engineering</td>
+               		<td>Fullerton College</td>
+               		<td>2015 - 2017</td>
+            	</tr>
+        	</table>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="The CSS Box Model">
+            <p>
+                All HTML elements can be considered as boxes. In CSS, the term "box model" is used when talking about   design and layout. 
+                <br/><br/>
+            	The CSS box model is essentially a box that wraps around every HTML element. It consists of: margins, borders, padding, and the actual content.
+           		<br/>
+                The image below illustrates the box model:
+            </p>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection >
+            <apex:image url="{!$Resource.box_model}" style="max-wiidth:200px;max-height:200px;"/>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection >
+            <ul>
+                <li>Content - The content of the box, where text and images appear</li>
+                <li>Padding - Clears an area around the content. The padding is transparent</li>
+                <li>Border - A border that goes around the padding and content</li>
+                <li>Margin - Clears an area outside the border. The margin is transparent</li>
+            </ul>
+            The box model allows us to add a border around elements, and to define space between elements.        	
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

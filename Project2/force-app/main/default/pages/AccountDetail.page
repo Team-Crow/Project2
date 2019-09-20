@@ -1,0 +1,17 @@
+<apex:page standardController="Account" extensions="AccountDetailControllerExtension">
+    <apex:pageMessages />
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Account Details">
+                <apex:outputfield value="{!Account.name}"/>
+                <apex:outputfield value="{!Account.phone}"/>
+                <apex:outputfield value="{!Account.NumberOfEmployees}"/>
+                <apex:outputfield value="{!Account.AnnualRevenue}"/>
+                <apex:outputfield value="{!Account.Website}"/>
+                <apex:outputfield value="{!Account.Active__c}"/>
+                <apex:outputfield value="{!Account.Industry}"/>
+                <apex:outputfield value="{!Account.type}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

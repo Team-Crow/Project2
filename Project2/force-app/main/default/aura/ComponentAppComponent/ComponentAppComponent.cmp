@@ -1,0 +1,14 @@
+<aura:component controller="LAC_FormsController" implements="flexipage:availableforallpagetypes,force:appHostable">
+	<aura:attribute name="newAccount" type="Account"
+                    default="{
+                             'sobjectType':'Account',
+                             'Name':''
+                             }"/>
+    <fieldset class="slds-box slds-container--small">
+        <legend>Add Account</legend>
+        <form>
+            <lightning:input aura:id="createAccountForm" label="Name" value="{!v.newAccount.Name}"/>
+            <lightning:button label="Submit" variant="brand" onclick="{!c.createAccount}"/>
+        </form>
+    </fieldset>
+</aura:component>

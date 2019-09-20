@@ -1,0 +1,18 @@
+<apex:page controller="TeamPage" sidebar="false">
+    <apex:pageBlock >
+        <apex:pageBlockSection title="My Team">
+            <apex:pageBlockTable value="{!team}" var="t">
+                <apex:column value="{!t.Name}"/>
+                <apex:column value="{!t.Team_Score__c}"/>
+                <apex:column value="{!t.Team_Rank__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Team Members">
+            <apex:pageBlockTable value="{!players}" var="p">
+                <apex:column value="{!p.Name}"/>
+                <apex:column value="{!p.Points__c}"/>
+                <apex:column value="{!p.Rank__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>
