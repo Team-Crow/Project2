@@ -1,0 +1,17 @@
+<apex:page controller="ChooseQuiz">
+    <apex:form >
+        <apex:pageBlock html-style="font-size: 30px;">
+            <apex:pageBlockSection title="New Attempt">
+                <apex:outputText value="{!player.Name}"/><br/>
+                <apex:inputField value="{!NewAttempt.Quiz__c}"/>
+            </apex:pageBlockSection>
+            <table style="width: 100%">
+            <tr>
+                <td align="center">
+                    <apex:commandButton action="{!SaveAttempt}" value="Start Quiz"/>
+                </td>
+            </tr>
+            </table>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

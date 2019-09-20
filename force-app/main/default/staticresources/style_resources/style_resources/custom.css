@@ -1,0 +1,77 @@
+.mybody {
+    background-color: #000000;
+}
+
+.display-5 {
+    color: rgb(238, 230, 230);
+    font-family: Rajdhani;
+}
+
+.customText {
+    color: #FFC107;
+    font-family: Rajdhani;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.liStyle {
+    list-style: none;
+}
+
+a.text-warning {
+    font-size: 30px;
+}
+
+.lead {
+    text-align: center;
+}
+
+.jumbotron-fluid {
+    /* background-color: aquamarine; */
+    background-image: url(img/projectHeader2.png);
+}
+
+.jumbotron {
+    background-image: url(img/projectHeader2.png);
+    background-size: cover;
+}
+
+
+/* page block styling */
+
+.bPageBlock,
+body #bodyCell .bResource .secondaryPalette,
+body .secondaryPalette.bPageBlock,
+body .individualPalette .secondaryPalette.bPageBlock,
+body .bodyDiv .genericTable,
+body .genericPageBlockTable,
+body .bodyDiv .bSubBlock,
+body .bComponentBlock .bPageBlock,
+body .bMyDashboard .bPageBlock,
+body.rlHoverFrame .bPageBlock,
+body.subjectSelectionPopup div.choicesBox,
+body.lookupTab .secondaryPalette.bPageBlock,
+body.popupTab .secondaryPalette.bPageBlock,
+body.UserTagStatsPage .secondaryPalette.bPageBlock {
+    background-color: white;
+    float: right;
+}
+
+.zen .zen-highlightBtn {
+    font-family: Rajdhani, Arial, Helvetica, sans-serif;
+    background-color: #FFC107;
+    color: #FFC107;
+    border: 1px solid #fff;
+    border-radius: 6px;
+}
+
+body .pbBody table.list tr.headerRow td,
+body .pbBody table.list tr.headerRow th {
+    color: #FFC107;
+    background-color: black;
+}
+
+.crowHeader {
+    color: #FFC107;
+    background-color: black;
+}

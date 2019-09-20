@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Player_Name_Letter_Num</fullName>
+    <active>true</active>
+    <description>Players cannot use special characters on their names</description>
+    <errorConditionFormula>NOT(REGEX( Name,&quot;[a-zA-Z[0-9]._? +-]+&quot;))</errorConditionFormula>
+    <errorDisplayField>Name</errorDisplayField>
+    <errorMessage>&#39;Player Name&#39; Cannot Contain Special Characters!</errorMessage>
+</ValidationRule>

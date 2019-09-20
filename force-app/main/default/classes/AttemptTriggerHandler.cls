@@ -1,0 +1,103 @@
+public class AttemptTriggerHandler {
+
+	public static void createDefaultAnswers(List<Attempt__c> newAttempts){
+        Set<ID> attemptIDSet = new Set<ID>();
+        for(Attempt__c a: newAttempts){
+            attemptIDSet.add(a.id);
+        }
+        List<Answer__c> answerList = new List<Answer__c>();
+       	List<Attempt__c> attemptList=[select id, name, Quiz__c, (select Name from Answers__r) from Attempt__c where id IN :attemptIDSet];
+        ID quizID = attemptList[0].Quiz__c;
+        List<Question__c> questionList = [select id, name from Question__c where Quiz__c =: quizID];
+        
+		for(Attempt__c a: attemptList){
+			if(a.Answers__r.isEmpty()){
+                for(integer i=0; i<5; i++){
+                    Answer__c answer = new Answer__c(Attempt__c = a.Id, QuestionNumber__c = questionList[i].id);
+                	answerList.add(answer);   
+                }
+			}	
+		}
+       	database.insert(answerList, false);
+    }
+    
+
+    //updates the players score, rank and average when attempt is updated
+    //Also update the team score and rank
+    public static void updatePlayer()
+    {
+        List <Player__c> playerList = New List<Player__c>();
+        
+       //Nested for loop to go through each attmept
+       //updates the players score, rank and average when attempt is updated
+        for(Player__c player: [SELECT Id, Name, Points__c, Quiz_Average__c,Quiz_Taken__c, (SELECT Id, Correct_Answers__c, Score__c FROM Attempts__r) From Player__c])
+        {
+            Player__c newPlayer = player;
+            
+            Decimal points = 0;
+            Decimal score = 0.0;
+            for(Attempt__c attempt: player.Attempts__r)
+            {
+                if(player.Quiz_Taken__c != 0 && player.Quiz_Taken__c != null)
+                {
+                	points = points+(attempt.Correct_Answers__c*10);
+                	score = score + attempt.Score__c;
+                }
+            }
+            
+            
+            if(score != 0)
+            {	
+                player.Points__c = points;
+            	player.Quiz_Average__c = score/player.Quiz_Taken__c;
+            	playerList.add(player);
+            }
+        }
+
+
+        if(!playerList.isEmpty())
+        	update playerList;
+        
+		List <Player__c> playerRankList = [SELECT Id, Name, Points__c,Rank__c,Team__c FROM Player__c ORDER BY Points__c DESC];
+        
+        //Rank update
+        Integer count= 1;
+        for(Player__c p:playerRankList)
+        {
+            
+            playerRankList[count-1].Rank__c = count;
+            count++;
+        }
+        if(!playerRankList.isEmpty())
+        	update playerRankList;
+
+        List <Team__c> teamList = [SELECT Id, Team_Score__c, Team_Rank__c  FROM Team__c ORDER BY Team_Score__c DESC];   
+        
+        //updates the team score
+        for(integer i=0;i<teamList.Size(); i++)
+        {
+            teamList[i].Team_Score__c = 0;
+
+            for(Player__c p:playerRankList)
+            {
+                if(p.Team__c == teamList[i].Id)
+                {
+                    teamList[i].Team_Score__c = teamList[i].Team_Score__c + p.Points__c;
+                }
+
+            }
+	    }
+
+        update teamList;
+
+        //updates the team Rank
+        List <Team__c> teamListRank = [SELECT Id, Team_Score__c, Team_Rank__c  FROM Team__c ORDER BY Team_Score__c DESC];
+
+        for(integer i=0;i<teamListRank.Size(); i++)
+        {
+            teamListRank[i].Team_Rank__c = i+1;
+        }
+
+        update teamListRank;
+    }
+}

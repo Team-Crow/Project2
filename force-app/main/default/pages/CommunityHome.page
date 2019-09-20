@@ -1,0 +1,107 @@
+<apex:page sidebar="false" showheader="false"   docType="html-5.0" Controller="LeaderBoardController"  >
+
+   
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <!--fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani:400,600,700" rel="stylesheet"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <!--Bootstrap css-->
+        <!-- custom css -->
+            <apex:stylesheet value="{!URLFOR($Resource.style_resources, 'style_resources/custom.css')}"/>
+        
+    <title>Communities</title>
+</head>
+
+<body class="mybody" >
+    
+    <div class="jumbotron jumbotron-fluid  mb-0"> 
+    </div>
+   
+
+    <!-- Nav -->
+    <nav class="nav d-flex justify-content-between" style="background-color:black">
+        <!-- linkdiv -->
+       
+        <h1 class="display-5 text-uppercase p-2 mr-4"> <b> Welcome </b> </h1>
+               
+        
+       
+            <!-- Links -->
+                <ul class="list-group list-group-horizontal-sm">
+                    <li class="customText liStyle m-2"><a class="text-warning text-uppercase" href="https://players-developer-edition.na136.force.com/s/knowledge-chatter-article">Topics &amp; Articles</a> </li>                   
+                <li class="customText liStyle m-2"><a class="text-warning text-uppercase" href="https://players-developer-edition.na136.force.com/s/choosequiz">Start Quiz</a> </li>                
+                <li class="customText liStyle m-2"><a class="text-warning text-uppercase" href="https://players-developer-edition.na136.force.com/s/myteam">My Team</a> </li>
+                </ul>
+                
+                    
+	</nav>
+
+                <!-- LeaderBoard -->
+                  <div class="d-flex shadow-lg"> 
+        <apex:pageBlock >
+        <h2 class="h2 customText text-uppercase">LeaderBoards</h2>
+        <apex:dataTable styleClass="table table-striped" title="LeaderBoard" value="{!players}" var="o"  columnsWidth="25%,25%,25%,25%">
+            
+            <apex:column headerClass="crowHeader text-uppercase" headerValue="Rank" value="{!o.Rank__c}" styleClass="customText" />
+            <apex:column headerClass="crowHeader text-uppercase" headerValue="Name" value="{!o.Name}" styleClass=" customText"/>
+            <apex:column headerClass="crowHeader text-uppercase" headerValue="Points" value="{!o.Points__c}" styleClass="customText" />
+            <apex:column headerClass="crowHeader text-uppercase" headerValue="Team Name" value="{!o.Team__r.Name}" styleClass="customText"/>
+            <flow:interview name="PlayerStatus"/>
+        </apex:dataTable>
+      <br/>  
+<!-- Team LeaderBoard -->
+
+    <apex:dataTable styleClass="table table-striped" value="{!team}" var="t" columnsWidth="40%, 30%,25%">
+        <apex:column headerClass="crowHeader text-uppercase"   headerValue="Rank" value="{!t.Team_Rank__c}" styleClass="customText"/>    
+        <apex:column headerClass="crowHeader text-uppercase" headerValue="Team Name" value="{!t.Name}" styleClass="customText"/>
+        <apex:column headerClass="crowHeader text-uppercase" headerValue="Team Score" value="{!t.Team_Score__c}" styleClass="customText"/>   
+    </apex:dataTable>
+
+    
+   
+
+            
+            
+        <!--Player Stats -->
+            <h2 class= "h2 customText" >Your Stats</h2>          
+        <apex:pageBlockSection >
+        	<apex:dataTable styleClass="table table-striped" value="{!attempt}" var="a">
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="Name"  styleClass="customText">
+                    <apex:outputLink value="/{!a.id}">{!a.Name}</apex:outputLink>
+                </apex:column>
+            	<apex:column headerClass="crowHeader text-uppercase" headerValue="Avg%" value="{!a.Score__c}" styleClass="customText"/>         
+        	</apex:dataTable>
+            <!--Pulling from userID to get logged in user: -->
+            <apex:dataTable styleClass="table table-striped" value="{!player}" var="p">
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="Rank" value="{!p.Rank__c}" styleClass="customText"/>
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="Name" value="{!p.Name}" styleClass="customText"/>
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="User" value="{!p.User__c}" styleClass="customText"/>
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="Team" value="{!p.Team__c}" styleClass="customText"/>
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="Quiz" value="{!p.Quiz_Taken__c}" styleClass="customText "/>
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="Avg%"  value="{!p.Quiz_Average__c}" styleClass="customText"/>
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="Points" value="{!p.Points__c}" styleClass="customText"/>
+               
+            </apex:dataTable>
+        </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <flow:interview name="PlayerStatus"/> 
+            </apex:pageBlockSection>
+        
+        </apex:pageBlock>
+                      
+      
+			
+        </div>
+            
+    <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <!-- /scripts -->
+</body>
+    </apex:page>
