@@ -1,0 +1,13 @@
+public class ChooseQuiz {
+    apexpages.StandardController stdController;
+    public ChooseQuiz(ApexPages.StandardController stdController){
+        this.stdController = stdController;
+    }
+    
+    public pagereference SaveAttempt(){
+        stdController.save();
+        PageReference Page = new PageReference('/apex/QuizPage');
+    	Page.setRedirect(true);
+    	return Page;
+    }
+}
