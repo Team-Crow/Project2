@@ -37,6 +37,7 @@
                     <li class="customText liStyle m-2"><a class="text-warning text-uppercase" href="https://players-developer-edition.na136.force.com/s/knowledge-chatter-article">Topics &amp; Articles</a> </li>                   
                 <li class="customText liStyle m-2"><a class="text-warning text-uppercase" href="https://players-developer-edition.na136.force.com/s/choosequiz">Start Quiz</a> </li>                
                 <li class="customText liStyle m-2"><a class="text-warning text-uppercase" href="https://players-developer-edition.na136.force.com/s/myteam">My Team</a> </li>
+                <li class="customText liStyle m-2"><a class="text-warning text-uppercase" href="https://players-developer-edition.na136.force.com/s/playercreate">Create Player</a> </li>
                 </ul>
                 
                     
@@ -52,7 +53,7 @@
             <apex:column headerClass="crowHeader text-uppercase" headerValue="Name" value="{!o.Name}" styleClass=" customText"/>
             <apex:column headerClass="crowHeader text-uppercase" headerValue="Points" value="{!o.Points__c}" styleClass="customText" />
             <apex:column headerClass="crowHeader text-uppercase" headerValue="Team Name" value="{!o.Team__r.Name}" styleClass="customText"/>
-            <flow:interview name="PlayerStatus"/>
+        
         </apex:dataTable>
       <br/>  
 <!-- Team LeaderBoard -->
@@ -89,9 +90,9 @@
                
             </apex:dataTable>
         </apex:pageBlockSection>
-            <apex:pageBlockSection >
-                <flow:interview name="PlayerStatus"/> 
-            </apex:pageBlockSection>
+            
+               
+               
         
         </apex:pageBlock>
                       
