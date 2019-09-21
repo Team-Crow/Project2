@@ -1,0 +1,31 @@
+<apex:page >
+        <head>
+                <meta charset="UTF-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+                
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+                <!--fonts-->
+                <link href="https://fonts.googleapis.com/css?family=Rajdhani:400,600,700" rel="stylesheet"/>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+                </script>
+                <!--Bootstrap css-->
+                    <!-- custom css -->
+                        <apex:stylesheet value="{!URLFOR($Resource.style_resources, 'style_resources/custom.css')}"/>
+                    
+                <title>Create A Player</title>
+            </head>
+            
+            <body class="mybody" >
+           
+<div class="d-flex shadow-lg">
+        <apex:pageBlock >
+              
+     <flow:interview name="PlayerStatus"/> 
+           
+        </apex:pageBlock>
+</div>
+                
+
+                </body>
+</apex:page>
