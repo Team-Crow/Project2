@@ -1,30 +1,22 @@
-# Salesforce App
 
-This guide helps Salesforce developers who are new to Visual Studio Code go from zero to a deployed app using Salesforce Extensions for VS Code and Salesforce CLI.
+# Application Lifecycle Management
 
-## Part 1: Choosing a Development Model
-
-There are two types of developer processes or models supported in Salesforce Extensions for VS Code and Salesforce CLI. These models are explained below. Each model offers pros and cons and is fully supported.
-
+The ALM used for this project was a package model, updating package with new metadata from Scratch orgs and then tested and pushed to the production org. The version control system used was Git, with Github as a resource.
 ### Package Development Model
 
-The package development model allows you to create self-contained applications or libraries that are deployed to your org as a single package. These packages are typically developed against source-tracked orgs called scratch orgs. This development model is geared toward a more modern type of software development process that uses org source tracking, source control, and continuous integration and deployment.
+We implemented the package development model which allowed us to create self-contained applications that we deployed to our production org as a single package. These packages are typically developed against source-tracked orgs called scratch orgs. This development model is geared toward a more modern type of software development process that uses org source tracking, source control, and continuous integration and deployment.
 
-If you are starting a new project, we recommend that you consider the package development model. To start developing with this model in Visual Studio Code, see [Package Development Model with VS Code](https://forcedotcom.github.io/salesforcedx-vscode/articles/user-guide/package-development-model). For details about the model, see the [Package Development Model](https://trailhead.salesforce.com/en/content/learn/modules/sfdx_dev_model) Trailhead module.
 
-If you are developing against scratch orgs, use the command `SFDX: Create Project` (VS Code) or `sfdx force:project:create` (Salesforce CLI)  to create your project. If you used another command, you might want to start over with that command.
+
+when we started our intial developing we used scratch orgs, use the command `SFDX: Create Project` (VS Code) or `sfdx force:project:create` (Salesforce CLI)  to create your project. If you used another command, you might want to start over with that command.
 
 When working with source-tracked orgs, use the commands `SFDX: Push Source to Org` (VS Code) or `sfdx force:source:push` (Salesforce CLI) and `SFDX: Pull Source from Org` (VS Code) or `sfdx force:source:pull` (Salesforce CLI). Do not use the `Retrieve` and `Deploy` commands with scratch orgs.
 
 ### Org Development Model
 
-The org development model allows you to connect directly to a non-source-tracked org (sandbox, Developer Edition (DE) org, Trailhead Playground, or even a production org) to retrieve and deploy code directly. This model is similar to the type of development you have done in the past using tools such as Force.com IDE or MavensMate.
+Our org development model allows you to connect directly to a non-source-tracked org ( Developer Edition (DE) org, and a production org) to retrieve and deploy code directly.  Using tools such as Force.com IDE and Visual Code.
 
-To start developing with this model in Visual Studio Code, see [Org Development Model with VS Code](https://forcedotcom.github.io/salesforcedx-vscode/articles/user-guide/org-development-model). For details about the model, see the [Org Development Model](https://trailhead.salesforce.com/content/learn/modules/org-development-model) Trailhead module.
 
-If you are developing against non-source-tracked orgs, use the command `SFDX: Create Project with Manifest` (VS Code) or `sfdx force:project:create --manifest` (Salesforce CLI) to create your project. If you used another command, you might want to start over with this command to create a Salesforce DX project.
-
-When working with non-source-tracked orgs, use the commands `SFDX: Deploy Source to Org` (VS Code) or `sfdx force:source:deploy` (Salesforce CLI) and `SFDX: Retrieve Source from Org` (VS Code) or `sfdx force:source:retrieve` (Salesforce CLI). The `Push` and `Pull` commands work only on orgs with source tracking (scratch orgs).
 
 ## The `sfdx-project.json` File
 
@@ -47,12 +39,38 @@ The `packageDirectories` filepath tells VS Code and Salesforce CLI where the met
 
 ## Part 2: Working with Source
 
-For details about developing against scratch orgs, see the [Package Development Model](https://trailhead.salesforce.com/en/content/learn/modules/sfdx_dev_model) module on Trailhead or [Package Development Model with VS Code](https://forcedotcom.github.io/salesforcedx-vscode/articles/user-guide/package-development-model).
+For developing purposes we used scratch orgs. [Package Development Model with VS Code](https://forcedotcom.github.io/salesforcedx-vscode/articles/user-guide/package-development-model).
 
-For details about developing against orgs that don’t have source tracking, see the [Org Development Model](https://trailhead.salesforce.com/content/learn/modules/org-development-model) module on Trailhead or [Org Development Model with VS Code](https://forcedotcom.github.io/salesforcedx-vscode/articles/user-guide/org-development-model).
 
-## Part 3: Deploying to Production
+## Deploying to Production
 
-Don’t deploy your code to production directly from Visual Studio Code. The deploy and retrieve commands do not support transactional operations, which means that a deployment can fail in a partial state. Also, the deploy and retrieve commands don’t run the tests needed for production deployments. The push and pull commands are disabled for orgs that don’t have source tracking, including production orgs.
 
-Deploy your changes to production using [packaging](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) or by [converting your source](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_force_source.htm#cli_reference_convert) into metadata format and using the [metadata deploy command](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_force_mdapi.htm#cli_reference_deploy).
+ WE deployed our changes to production using [packaging](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm).
+
+# Data Model
+**![](https://lh6.googleusercontent.com/AovijzxV_iXdhye3wMZVNupK5CzlkPjI-VS9XqM6oR2XUdvFJt_rlUtE1NB6LcehpiA6n-z9UhNKy2zWCxSgqVm_c-E7vfOmXQV1p85svaWre1COuW_YUd0xAcb6RNuc0oabWgL9gaY)**
+
+
+- The standard **Users Object**  is a Many -to- Many loosely coupled ***Look-up*** relationship to the **Team Object** with a ***junction*** object **Player** which allows users to also create a player name outside of using their username and join a team.
+- The **Player object** has a one to many ***Master-Detail*** relationship with the **Attempt Object**.
+- The **Attempt object** has a one to many ***Master-Detail***  relationship with the **Answer object**, each attempt can have many answers. 
+- The **Quiz object** has a one to many ***look-up*** relationship to the **Attempt object** allowing fields on the attempt to be referenced  and a **Master-detail**  relationship with **Question object** as each quiz is closely related to the Question object allowing for roll-up summaries.  ***Each quiz can have many questions and each quiz can be attempted multiple times*** .
+- The **Question object** has a one to many ***look-up*** relationship to the Answer object as each Question object can have many answers associated to it.
+
+# Design
+For design of the communities page, we leveraged **Visual Force Pages** (VFP) and the **Community page builder** to create a player and management community with multiple linked pages. The design process incorporated ***VFP components*** such as ***apex:page*** and ***apex:dataTable*** as well as **HTML elements** to take advantage of placement with ***DIV***  and ***flex-box model***. **Bootstrap** was also used to implement the table designs for the leaderboards and player information boards as well as the power behind the flex-box model. We also implemented a custom **CSS** file to manipulate the colors and fonts especially for ***dataTables***. Each page was created individually and uploaded to the development org and then put together for a uniformed look and feel. Data that is displayed on the VFP are retrieved from controllers with get methods to query the database for player scores, teams, names, and averages. 
+Pages consist of 
+* Home page
+* Player-create page
+* Knowledge articles
+* Team information page.
+***
+# Flow
+***enter info here*** 
+****
+# Support Process
+***enter info here***
+***
+# Knowledge Articles 
+***Info here***
+***
