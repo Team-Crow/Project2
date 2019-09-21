@@ -1,0 +1,44 @@
+<apex:page >
+        <head>
+                <meta charset="UTF-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+                
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+                <!--fonts-->
+                <link href="https://fonts.googleapis.com/css?family=Rajdhani:400,600,700" rel="stylesheet"/>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+                </script>
+                <!--Bootstrap css-->
+                    <!-- custom css -->
+                        <apex:stylesheet value="{!URLFOR($Resource.style_resources, 'style_resources/custom.css')}"/>
+                    
+                <title>Communities</title>
+            </head>
+            
+            <body class="mybody" >
+                
+                <div class="jumbotron jumbotron-fluid  mb-0"> 
+                </div>
+               
+            
+                <!-- Nav -->
+                <nav class="nav d-flex justify-content-between" style="background-color:black">
+                    <!-- linkdiv -->
+                   
+                    <h1 class="display-5 text-uppercase p-2 mr-4"> <b> Welcome </b> </h1>
+                           
+                    
+                   
+                        <!-- Links -->
+                            <ul class="list-group list-group-horizontal-sm">
+                                <li class="customText liStyle m-2"><a class="text-warning text-uppercase" href="https://players-developer-edition.na136.force.com/s">Home</a> </li>                   
+                            <li class="customText liStyle m-2"><a class="text-warning text-uppercase" href="https://players-developer-edition.na136.force.com/s/choosequiz">Start Quiz</a> </li>                
+                            <li class="customText liStyle m-2"><a class="text-warning text-uppercase" href="https://players-developer-edition.na136.force.com/s/myteam">My Team</a> </li>
+                            </ul>
+                            
+                                
+                </nav>
+
+</body>
+</apex:page>
