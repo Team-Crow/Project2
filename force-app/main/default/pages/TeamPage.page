@@ -1,20 +1,61 @@
-<apex:page controller="TeamPage" sidebar="false">
-    <center>
-    <apex:pageBlock html-style="font-size: 30px;">
-        <apex:pageBlockSection title="My Team">
-            <apex:pageBlockTable value="{!team}" var="t">
-                <apex:column value="{!t.Name}"/>
-                <apex:column value="{!t.Team_Score__c}"/>
-                <apex:column value="{!t.Team_Rank__c}"/>
-            </apex:pageBlockTable>
-        </apex:pageBlockSection>
-        <apex:pageBlockSection title="Team Members">
-            <apex:pageBlockTable value="{!players}" var="p">
-                <apex:column value="{!p.Name}"/>
-                <apex:column value="{!p.Points__c}"/>
-                <apex:column value="{!p.Rank__c}"/>
-            </apex:pageBlockTable>
-        </apex:pageBlockSection>
-    </apex:pageBlock>
-    </center>
+<apex:page sidebar="false" showheader="false"   docType="html-5.0" controller="TeamPage" >
+        <head>
+                <meta charset="UTF-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+                
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+                <!--fonts-->
+                <link href="https://fonts.googleapis.com/css?family=Rajdhani:400,600,700" rel="stylesheet"/>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+                </script>
+                <!--Bootstrap css-->
+                    <!-- custom css -->
+                        <apex:stylesheet value="{!URLFOR($Resource.style_resources, 'style_resources/custom.css')}"/>
+                    
+                <title>My Team</title>
+            </head>
+            
+          <body class="mybody">
+                
+                <div class="jumbotron jumbotron-fluid  mb-0"> 
+                </div>
+               
+            
+                <!-- Nav -->
+                <nav class="nav d-flex justify-content-between" style="background-color:black">
+                    <!-- linkdiv -->
+                   
+                    <h1 class="display-5 text-uppercase p-2 mr-4"> <b> Welcome </b> </h1>
+                           
+                    
+                   
+                        <!-- Links -->
+                            <ul class="list-group list-group-horizontal-sm">
+                                <li class="customText liStyle m-2"><a class="text-warning text-uppercase" href="https://players-developer-edition.na136.force.com/s/knowledge-chatter-article">Topics &amp; Articles</a> </li>                   
+                            <li class="customText liStyle m-2"><a class="text-warning text-uppercase" href="https://players-developer-edition.na136.force.com/s/choosequiz">Start Quiz</a> </li>                
+                            <li class="customText liStyle m-2"><a class="text-warning text-uppercase" href="https://players-developer-edition.na136.force.com/s/">Home</a> </li>
+                            </ul>
+                            
+                                
+                </nav>
+    <div class="d-flex flex-column shadow-lg"> 
+    
+            <h2 class="h2 customText text-uppercase">My Team</h2>
+            <apex:dataTable styleClass="table table-striped" title="Myteam" value="{!team}" var="t" columnsWidth="30%,40%,30%">
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="Team Name" value="{!t.Name}" styleClass="customText"/>
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="Team Score" value="{!t.Team_Score__c}" styleClass="customText"/>
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="Team Rank" value="{!t.Team_Rank__c}" styleClass="customText"/>
+            </apex:dataTable>
+        
+        
+            <apex:dataTable styleClass="table table-striped" title="MyPlayer" value="{!players}" var="p" columnsWidth="30%,40%,30%">
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="Player Name" value="{!p.Name}" styleClass="customText"/>
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="Player Points" value="{!p.Points__c}" styleClass="customText"/>
+                <apex:column headerClass="crowHeader text-uppercase" headerValue="Player Rank" value="{!p.Rank__c}" styleClass="customText"/>
+            </apex:dataTable>
+      
+   
+   </div>
+</body>
 </apex:page>
